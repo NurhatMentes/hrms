@@ -1,7 +1,5 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.Constants.Messages;
 import kodlamaio.hrms.business.abstracts.EmployerService;
-import kodlamaio.hrms.core.adapter.abstracts.ConfirmationService;
 import kodlamaio.hrms.core.utilities.resultChecker.ResultChecker;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
@@ -21,7 +18,6 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ConfirmationDao;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entitites.concretes.Confirmation;
 import kodlamaio.hrms.entitites.concretes.Employer;
 import kodlamaio.hrms.entitites.concretes.User;
 
@@ -30,17 +26,13 @@ public class EmployerManager implements EmployerService{
 
 	private EmployerDao employerDao;
 	private UserDao userDao;
-	private ConfirmationDao confirmationDao;
-	private ConfirmationService confirmationSerivce;
 	
 	@Autowired
 	public EmployerManager(EmployerDao employerDao, UserDao userDao, 
-			ConfirmationDao confirmationDao, ConfirmationService confirmationSerivce) {
+			ConfirmationDao confirmationDao) {
 		super();
 		this.employerDao = employerDao;
 		this.userDao = userDao;
-		this.confirmationDao = confirmationDao;
-		this.confirmationSerivce=confirmationSerivce;
 	}
 
 	@Override
@@ -56,7 +48,7 @@ public class EmployerManager implements EmployerService{
 				nullAndEmptyField(employer, user),checkIfUserExistsBefore(users,user)));
 		
 		if(result.isSuccess()) {
-			employer.setIsConfirmation(false);
+			employer.getConfirmation().setIsConfirmation(false);
 			employerDao.save(employer);	
 			userDao.save(user);
 			

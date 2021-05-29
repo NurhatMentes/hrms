@@ -3,7 +3,6 @@ package kodlamaio.hrms.business.concretes;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.tomcat.util.net.jsse.JSSEKeyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,8 @@ import kodlamaio.hrms.business.abstracts.JobSeekerService;
 import kodlamaio.hrms.business.abstracts.MernisService;
 import kodlamaio.hrms.business.abstracts.VerificationCodeService;
 import kodlamaio.hrms.core.adapter.abstracts.EmailService;
-import kodlamaio.hrms.core.adapter.abstracts.UserCheckService;
 import kodlamaio.hrms.core.utilities.resultChecker.ResultChecker;
 import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
@@ -31,21 +28,16 @@ public class JobSeekerManager implements JobSeekerService {
 	
 	private JobSeekerDao jobSeekerDao;
 	private UserDao userDao;
-	private MernisService mernisService;
-	private UserCheckService userCheckService;
     private EmailService emailService;
 	private VerificationCodeService verificationCodeService;
 
 	@Autowired
 	public JobSeekerManager(JobSeekerDao jobSeekerDao, MernisService mernisService, UserDao userDao, 
-            UserCheckService userCheckService,
             EmailService emailService,
             VerificationCodeService verificationCodeService) {
 		super();
 		this.jobSeekerDao = jobSeekerDao;	
-		this.mernisService = mernisService;
 		this.userDao=userDao;
-		this.userCheckService = userCheckService;
         this.emailService = emailService;
         this.verificationCodeService = verificationCodeService;
 	}

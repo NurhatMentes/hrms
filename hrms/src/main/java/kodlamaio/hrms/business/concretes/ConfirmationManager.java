@@ -1,4 +1,4 @@
-package kodlamaio.hrms.core.adapter.concretes;
+package kodlamaio.hrms.business.concretes;
 
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -6,18 +6,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.core.adapter.abstracts.ConfirmationService;
+import kodlamaio.hrms.Constants.Messages;
+import kodlamaio.hrms.business.abstracts.ConfirmationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ConfirmationDao;
 import kodlamaio.hrms.entitites.concretes.Confirmation;
 
+
 @Service
-public class ConfirmationAdapter implements ConfirmationService{
+public class ConfirmationManager implements ConfirmationService{
 	
 	private ConfirmationDao dao;
 
-	public ConfirmationAdapter(ConfirmationDao dao) {
+	public ConfirmationManager(ConfirmationDao dao) {
 		super();
 		this.dao = dao;
 	}
@@ -38,6 +42,13 @@ public class ConfirmationAdapter implements ConfirmationService{
 	@Override
 	public DataResult<List<Confirmation>> getAll() {
 		return new SuccessDataResult<List<Confirmation>>(dao.findAll());
+	}
+
+	@Override
+	public Result add(Confirmation confirmation) {	
+		
+		dao.save(confirmation);
+		return new SuccessResult(Messages.employerConfirmed);
 	}
 
 }

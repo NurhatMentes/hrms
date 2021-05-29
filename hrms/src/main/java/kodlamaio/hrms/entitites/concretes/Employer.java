@@ -1,10 +1,13 @@
 package kodlamaio.hrms.entitites.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -43,7 +46,8 @@ public class Employer {
 	@Column(name = "tel_number")
 	private String phone;
 	
-	@Column(name = "is_confirmation")
-	private boolean IsConfirmation;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "confirmation_id", referencedColumnName = "id")
+	private Confirmation confirmation;
 
 }

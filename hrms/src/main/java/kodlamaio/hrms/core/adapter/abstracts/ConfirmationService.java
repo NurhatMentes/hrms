@@ -8,5 +8,5 @@ import kodlamaio.hrms.entitites.concretes.Confirmation;
 public interface ConfirmationService {
 	
 	DataResult<List<Confirmation>> getAll();
-	boolean isConfirmed(Confirmation confirmation);
+	boolean isConfirmed(Boolean booltype);
 }

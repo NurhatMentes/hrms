@@ -21,16 +21,16 @@ public class ConfirmationAdapter implements ConfirmationService{
 		super();
 		this.dao = dao;
 	}
-	
+	boolean bool = false;
 	@Override
-	public boolean isConfirmed(Confirmation confirmation) {
+	public boolean isConfirmed(Boolean booltype) {
 		LocalDateTime firstDate = LocalDateTime.now();
 		LocalDateTime endDate = firstDate.plus(Period.ofDays(1));
 		LocalDateTime today = LocalDateTime.now();
 		
-		if(today.getHour() >= endDate.getHour() && confirmation.isIsConfirmation()==false) {
-			confirmation.setIsConfirmation(true);
-			return true;
+		if(today.getHour() >= endDate.getHour() && booltype==false) {
+			
+			return bool=true;
 		}
 		return false;
 	}

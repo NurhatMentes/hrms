@@ -36,6 +36,6 @@ public class EmployersController {
 	
 	@PostMapping("/register")
 	public Result add(@Valid @RequestBody Employer employer, @Valid User user) {
-		return this.service.add(employer, user, null);
+		return this.service.add(employer, user);
 	}
 }

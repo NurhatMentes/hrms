@@ -10,5 +10,5 @@ import kodlamaio.hrms.entitites.concretes.User;
 
 public interface EmployerService {
 	DataResult<List<Employer>> getAll();
-	Result add(Employer employer, User user, Confirmation confirmation);
+	Result add(Employer employer, User user);
 }

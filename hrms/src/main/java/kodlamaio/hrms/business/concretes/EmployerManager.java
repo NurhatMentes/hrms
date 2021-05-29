@@ -49,14 +49,14 @@ public class EmployerManager implements EmployerService{
 	}
 
 	@Override
-	public Result add(Employer employer, User user, Confirmation confirmation) { 
+	public Result add(Employer employer, User user) { 
+		List<User> users = userDao.findAll() ;
 		Result result = ResultChecker.check(Arrays.asList(
 				checkIfEmail(employer, user),
-				nullAndEmptyField(employer, user)));
+				nullAndEmptyField(employer, user),checkIfUserExistsBefore(users,user)));
 		
 		if(result.isSuccess()) {
-		confirmationSerivce.isConfirmed(confirmation);
-			
+			employer.setIsConfirmation(false);
 			employerDao.save(employer);	
 			userDao.save(user);
 			
@@ -74,8 +74,8 @@ public class EmployerManager implements EmployerService{
 	
 	private Result checkIfEmail(Employer employer, User user) {
 		
-		 String[] domainsWebsite = employer.getWebAdress().split("[.]+");
-         String[] domainsMail = user.getEmail().split("[.]+");
+		 String[] domainsWebsite = employer.getWebAdress().split(".",1);
+         String[] domainsMail = user.getEmail().split("[@]+");
          
          if (domainsMail[domainsMail.length - 1].equals(domainsWebsite[domainsWebsite.length - 1])) {
         	 return new SuccessResult();
@@ -94,13 +94,12 @@ public class EmployerManager implements EmployerService{
 				  }
 	  }
 	 
-	 private Result checkIfEmailExists(String email){
-	        if(userDao.existsByEmail(email)){
-	            return new ErrorResult(
-	                    "Bu e-posta zaten alınmış."
-	            );
-	        } else {
-	            return new SuccessResult();
+	 private Result checkIfUserExistsBefore(List<User> users,User user){
+	        for (User checkuser: users) {
+	            if (checkuser.getEmail().equals(user.getEmail())){
+	                return new ErrorResult("Bu email mevcut.");
+	            }
 	        }
+	        return new SuccessResult();
 	    }
 }

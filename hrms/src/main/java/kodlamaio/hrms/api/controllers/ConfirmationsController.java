@@ -35,8 +35,9 @@ public class ConfirmationsController {
 		return service.getAll();
 	}
 	
-	@PostMapping("/confirmed")
-	public boolean isConfirmed(@Valid @RequestBody Confirmation confirmation) {
-		return this.service.isConfirmed(confirmation);
-	}
+//	@PostMapping("/confirmed")
+//	public boolean isConfirmed(@Valid @RequestBody Confirmation confirmation) {
+//		return this.service.isConfirmed(confirmation);
+//	}
+	
 }

@@ -42,5 +42,8 @@ public class Employer {
     @Pattern(regexp = "(^[1-9][0-9]*$)|(^\\d{10}$)", message = "Telefon 0 ile başlayamaz veya metin içeremez.")
 	@Column(name = "tel_number")
 	private String phone;
+	
+	@Column(name = "is_confirmation")
+	private boolean IsConfirmation;
 
 }

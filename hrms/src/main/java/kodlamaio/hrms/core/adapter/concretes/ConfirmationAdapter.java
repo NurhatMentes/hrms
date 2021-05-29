@@ -1,4 +1,4 @@
-package kodlamaio.hrms.core.utilities.adapter.concretes;
+package kodlamaio.hrms.core.adapter.concretes;
 
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.core.utilities.adapter.abstracts.ConfirmationService;
+import kodlamaio.hrms.core.adapter.abstracts.ConfirmationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.abstracts.ConfirmationDao;

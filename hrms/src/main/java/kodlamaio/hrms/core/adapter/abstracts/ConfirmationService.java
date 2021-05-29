@@ -1,4 +1,4 @@
-package kodlamaio.hrms.core.utilities.adapter.abstracts;
+package kodlamaio.hrms.core.adapter.abstracts;
 
 import java.util.List;
 

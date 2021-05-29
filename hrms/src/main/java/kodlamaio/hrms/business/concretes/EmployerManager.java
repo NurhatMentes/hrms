@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.Constants.Messages;
 import kodlamaio.hrms.business.abstracts.EmployerService;
-import kodlamaio.hrms.core.utilities.adapter.abstracts.ConfirmationService;
+import kodlamaio.hrms.core.adapter.abstracts.ConfirmationService;
 import kodlamaio.hrms.core.utilities.resultChecker.ResultChecker;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;

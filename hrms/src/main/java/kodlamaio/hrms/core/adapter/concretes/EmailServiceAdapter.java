@@ -1,9 +1,9 @@
-package kodlamaio.hrms.core.utilities.adapter.concretes;
+package kodlamaio.hrms.core.adapter.concretes;
 
 import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.core.adapter.abstracts.EmailService;
 import kodlamaio.hrms.core.utilities.ExternalServices.email.FakeMailSender;
-import kodlamaio.hrms.core.utilities.adapter.abstracts.EmailService;
 @Service
 public class EmailServiceAdapter implements EmailService{
 

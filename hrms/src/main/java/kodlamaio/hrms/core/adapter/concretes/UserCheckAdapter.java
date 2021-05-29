@@ -1,8 +1,8 @@
-package kodlamaio.hrms.core.utilities.adapter.concretes;
+package kodlamaio.hrms.core.adapter.concretes;
 
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.core.utilities.adapter.abstracts.UserCheckService;
+import kodlamaio.hrms.core.adapter.abstracts.UserCheckService;
 
 @Service
 public class UserCheckAdapter implements UserCheckService{

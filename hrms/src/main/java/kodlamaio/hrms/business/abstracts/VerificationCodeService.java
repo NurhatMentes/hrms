@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entitites.concretes.User;
-import kodlamaio.hrms.entitites.concretes.VerificationCode;
+import kodlamaio.hrms.entities.concretes.User;
+import kodlamaio.hrms.entities.concretes.VerificationCode;
 
 public interface VerificationCodeService {
 	    VerificationCode add(User user);

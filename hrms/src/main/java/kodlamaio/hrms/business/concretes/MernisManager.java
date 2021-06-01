@@ -3,12 +3,12 @@ package kodlamaio.hrms.business.concretes;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.MernisService;
-import kodlamaio.hrms.entitites.concretes.JobSeeker;
+import kodlamaio.hrms.entities.concretes.Candidate;
 @Service	
 public class MernisManager implements MernisService{
 
 	@Override
-	public boolean isMernis(JobSeeker jobSeeker) {
+	public boolean isMernis(Candidate candidate) {
 		
 		return false;
 	}

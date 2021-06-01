@@ -13,7 +13,9 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ConfirmationDao;
-import kodlamaio.hrms.entitites.concretes.Confirmation;
+import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.entities.concretes.Confirmation;
+import kodlamaio.hrms.entities.concretes.Employer;
 
 
 @Service
@@ -25,11 +27,12 @@ public class ConfirmationManager implements ConfirmationService{
 		super();
 		this.dao = dao;
 	}
+
 	boolean bool = false;
 	@Override
 	public boolean isConfirmed(Boolean booltype) {
 		LocalDateTime firstDate = LocalDateTime.now();
-		LocalDateTime endDate = firstDate.plus(Period.ofDays(1));
+		LocalDateTime endDate = firstDate.plus(Period.ofDays(30));
 		LocalDateTime today = LocalDateTime.now();
 		
 		if(today.getHour() >= endDate.getHour() && booltype==false) {
@@ -46,7 +49,6 @@ public class ConfirmationManager implements ConfirmationService{
 
 	@Override
 	public Result add(Confirmation confirmation) {	
-		
 		dao.save(confirmation);
 		return new SuccessResult(Messages.employerConfirmed);
 	}

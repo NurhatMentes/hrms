@@ -8,6 +8,11 @@ public class Messages {
 	
 	public static String jobSeekerGetAll = "İş arayanlar listelendi"; 
 	
+	public static String JobAdvertisementGetAll = "İş ilanları listelendi";
+	public static String JobAdvertisementAdd = "İş ilanı başarıyla eklendi";
+	public static String JobAdvertisementUpdate = "İş ilanı başarıyla güncellenidi";
+	public static String JobAdvertisementDelete = "İş ilanı başarıyla silindi";
+	
 	public static String jobPositionGetAll = "İş pozisyonları listelendi"; 
 	public static String jobPositionAdd = "Yeni İş pozisyonu eklendi"; 
 
@@ -15,5 +20,5 @@ public class Messages {
 	public static String mernisNo = "X Bu kişi gerçek değil"; 
 	public static String add = "Kaydınız gerçekleşmiştir"; 
 	public static String mail = "Bu E-Posta sistemde kayıtlı"; 
-	public static String tcNoCheck = "TC kimlik uzunluğu 11 olmalıdır"; 
+	public static String tcNoCheck = "TC kimlik uzunluğu 11 karakter olmalıdır"; 
 }

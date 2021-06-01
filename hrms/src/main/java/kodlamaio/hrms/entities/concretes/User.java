@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entitites.concretes;
+package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +26,8 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@Column(name="candidate_id")
+	private int candidateId;
 	
 	@Column(name="employers_id")
 	private int employersId;

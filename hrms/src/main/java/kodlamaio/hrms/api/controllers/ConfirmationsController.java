@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.ConfirmationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entitites.concretes.Confirmation;
+import kodlamaio.hrms.entities.concretes.Confirmation;
 
 
 @RestController

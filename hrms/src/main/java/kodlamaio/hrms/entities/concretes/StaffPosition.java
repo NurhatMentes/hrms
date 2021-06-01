@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entitites.concretes;
+package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,20 +16,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="system_employees")
-public class SystemEmployee {
+@Table(name="staff_positions")
+public class StaffPosition {
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-
-	@Column(name="position_id")
-	private int positionId;
 	
-	@Column(name="first_name")
-	private String firstName;
+	@Column(name="system_employees_id")
+	private int systemEmployeesId;
 	
-	@Column(name="last_name")
-	private String lastName;
+	@Column(name="position_name")
+	private String positionName;
 }

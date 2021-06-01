@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.Constants.Messages;
-import kodlamaio.hrms.business.abstracts.JobSeekerService;
+import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.business.abstracts.MernisService;
 import kodlamaio.hrms.business.abstracts.VerificationCodeService;
 import kodlamaio.hrms.core.adapter.abstracts.EmailService;
@@ -17,51 +17,51 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.JobSeekerDao;
+import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entitites.concretes.JobSeeker;
-import kodlamaio.hrms.entitites.concretes.User;
-import kodlamaio.hrms.entitites.concretes.VerificationCode;
+import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.User;
+import kodlamaio.hrms.entities.concretes.VerificationCode;
 
 @Service
-public class JobSeekerManager implements JobSeekerService {
+public class CandidateManager implements CandidateService {
 	
-	private JobSeekerDao jobSeekerDao;
+	private CandidateDao candidateDao;
 	private UserDao userDao;
     private EmailService emailService;
 	private VerificationCodeService verificationCodeService;
 
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao, MernisService mernisService, UserDao userDao, 
+	public CandidateManager(CandidateDao candidateDao, MernisService mernisService, UserDao userDao, 
             EmailService emailService,
             VerificationCodeService verificationCodeService) {
 		super();
-		this.jobSeekerDao = jobSeekerDao;	
+		this.candidateDao = candidateDao;	
 		this.userDao=userDao;
         this.emailService = emailService;
         this.verificationCodeService = verificationCodeService;
 	}
 
 	@Override
-	public DataResult<List<JobSeeker>> getAll() {
-		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.findAll(), Messages.jobSeekerGetAll);
+	public DataResult<List<Candidate>> getAll() {
+		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(), Messages.jobSeekerGetAll);
 	}
 
 	@Override
-	public Result add(JobSeeker jobSeeker, User user) {
+	public Result add(Candidate candidate, User user) {
 		
 		 Result result = ResultChecker.check(Arrays.asList(
 	                checkIfEmailExists(user.getEmail()),
 	                checkIfPasswordsMatch(user.getPassword(), user.getPasswordAgain()),
-	                nullAndEmptyField(jobSeeker,user),
-	                checkIfTcNO(jobSeeker)
+	                nullAndEmptyField(candidate,user),
+	                checkIfTcNO(candidate)
 	        ));
 
 	        if(result.isSuccess()){
-	        	this.jobSeekerDao.save(jobSeeker);
+	        	this.candidateDao.save(candidate);
 	    		this.userDao.save(user);
 	    		return new SuccessResult(
-	    				jobSeeker.getFirstName() + " " + jobSeeker.getLastName() + " " + Messages.add);
+	    				candidate.getFirstName() + " " + candidate.getLastName() + " " + Messages.add);
 	        } else {
 	            return new ErrorResult(result.getMessage());
 	        }
@@ -84,8 +84,8 @@ public class JobSeekerManager implements JobSeekerService {
 	        emailService.sendMail(email, message);
 	    }
 	    
-	    private Result checkIfTcNO(JobSeeker jobSeeker) {
-	    	if(jobSeeker.getNationalId().length()!=11) {
+	    private Result checkIfTcNO(Candidate candidate) {
+	    	if(candidate.getNationalId().length()!=11) {
 	    	    return new ErrorResult(Messages.tcNoCheck);
 	    	}
 	    	return new SuccessResult();
@@ -111,9 +111,9 @@ public class JobSeekerManager implements JobSeekerService {
 	        }
 	    }
 	
-	    private Result nullAndEmptyField(JobSeeker jobSeeker, User user) { 
-		  if(jobSeeker.getFirstName().isEmpty() || jobSeeker.getLastName().isEmpty() ||
-	  jobSeeker.getNationalId().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty() ||
+	    private Result nullAndEmptyField(Candidate candidate, User user) { 
+		  if(candidate.getFirstName().isEmpty() || candidate.getLastName().isEmpty() ||
+				  candidate.getNationalId().isEmpty() || user.getEmail().isEmpty() || user.getPassword().isEmpty() ||
 	  user.getPasswordAgain().isEmpty()) {
 			  return new ErrorResult("X Alanlar boş geçilemez"); 
 			  } else { 

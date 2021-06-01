@@ -18,8 +18,8 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ConfirmationDao;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entitites.concretes.Employer;
-import kodlamaio.hrms.entitites.concretes.User;
+import kodlamaio.hrms.entities.concretes.Employer;
+import kodlamaio.hrms.entities.concretes.User;
 
 @Service
 public class EmployerManager implements EmployerService{
@@ -37,7 +37,8 @@ public class EmployerManager implements EmployerService{
 
 	@Override
 	public DataResult<List<Employer>> getAll() {
-		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), Messages.employerGetall);
+		return new SuccessDataResult<List<Employer>>(
+				this.employerDao.findAll(), Messages.employerGetall);
 	}
 
 	@Override

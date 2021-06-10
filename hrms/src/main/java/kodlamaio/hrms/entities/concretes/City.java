@@ -25,12 +25,11 @@ import lombok.NoArgsConstructor;
 @Table(name="cities")
 public class City {
 	@Id
-	@GeneratedValue()
 	@Column(name="id")
 	private int id;
 	
 	@Column(name="city_name")
-	private int citiyName;
+	private String citiyName;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "city")

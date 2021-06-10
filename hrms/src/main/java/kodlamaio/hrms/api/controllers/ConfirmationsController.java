@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SQLUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Confirmation;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/confirmations")
 public class ConfirmationsController {

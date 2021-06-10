@@ -2,6 +2,7 @@ package kodlamaio.hrms.entities.dtos;
 
 import java.util.List;
 
+
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.CandidateEducation;
 import kodlamaio.hrms.entities.concretes.CandidateExperience;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurriculumVitaeDto {
+public class CandidateResumeDto {
     private Candidate candidate;
     private List<CandidateEducation> candidateEducation;
     private List<CandidateExperience> candidateExperiences;

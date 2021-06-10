@@ -7,6 +7,10 @@ public class Messages {
 	public static String employerConfirmed= "İşlem başarılı"; 
 	
 	public static String jobSeekerGetAll = "İş arayanlar listelendi"; 
+	public static String candidateEducationAdd = "Eğitim bilgileriniz kaydedildi"; 
+	public static String candidateExperienceAdd = "Deneyim bilgileriniz kaydedildi"; 
+	public static String candidateImageAdd = "Resim kaydedildi"; 
+	public static String candidateSkillAdd = "Becerileriniz kaydedildi"; 
 	
 	public static String JobAdvertisementGetAll = "İş ilanları listelendi";
 	public static String JobAdvertisementAdd = "İş ilanı başarıyla eklendi";

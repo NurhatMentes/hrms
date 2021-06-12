@@ -59,4 +59,9 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		return new SuccessResult(Messages.JobAdvertisementDelete);
 	}
 
+	@Override
+	public DataResult<JobAdvertisement> getByJobAdvertisementId(int id) {
+		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.getById(id));
+	}
+
 }

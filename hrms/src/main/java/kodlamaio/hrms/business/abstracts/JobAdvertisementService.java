@@ -10,6 +10,7 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<List<JobAdvertisement>> getAllSortedByActive();
 	DataResult<List<JobAdvertisement>> getAllSortedByDate();
+	DataResult<JobAdvertisement>getByJobAdvertisementId(int id);
 	Result add(JobAdvertisement advertisement);
 	Result update(JobAdvertisement jobAdvertisement);
 	Result delete(JobAdvertisement jobAdvertisement);

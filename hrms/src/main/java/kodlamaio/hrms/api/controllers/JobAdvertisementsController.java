@@ -34,6 +34,11 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getAll();
 	}
 	
+	@GetMapping("/getbyid")
+	public DataResult<JobAdvertisement> getById(@RequestParam int id){
+		return this.jobAdvertisementService.getByJobAdvertisementId(id);
+	}
+	
 	@GetMapping("/getallbydate")
 	public DataResult<List<JobAdvertisement>> getAllByDate(){
 		return this.jobAdvertisementService.getAllSortedByDate();
